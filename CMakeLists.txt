@@ -8,4 +8,4 @@ add_executable("gta3r"
     "src/main.cpp"
 )
 target_include_directories("gta3r" PRIVATE "include")
-target_link_libraries("gta3r" PRIVATE "raylib")
+target_link_libraries("gta3r" PRIVATE "raylib" "rwloader")
