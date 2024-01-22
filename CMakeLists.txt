@@ -2,6 +2,7 @@ cmake_minimum_required(VERSION 3.22)
 
 # Libraries
 add_subdirectory("3rd/raylib")
+add_subdirectory("rwloader")
 
 add_executable("gta3r"
     "src/main.cpp"
