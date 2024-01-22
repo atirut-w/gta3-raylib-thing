@@ -1,0 +1,5 @@
+.vscode/
+build/
+
+gta3/*
+!gta3/README.md
