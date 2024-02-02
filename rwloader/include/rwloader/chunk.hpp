@@ -5,11 +5,15 @@ namespace RWLoader
 {
     class Chunk
     {
+    protected:
+        int library_id;
+
     public:
-        Chunk(std::istream&);
+        Chunk(std::istream &);
 
         int type;
-        int library_id;
         int size;
+
+        int get_version();
     };
 }
