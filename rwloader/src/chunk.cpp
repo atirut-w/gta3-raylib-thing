@@ -13,6 +13,6 @@ T read(std::istream& stream)
 Chunk::Chunk(std::istream& stream)
 {
     type = read<int>(stream);
-    library_id = read<int>(stream);
     size = read<int>(stream);
+    library_id = read<int>(stream);
 }
