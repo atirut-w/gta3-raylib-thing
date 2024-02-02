@@ -1,5 +1,5 @@
 #include <fstream>
-#include <rwloader/chunk.hpp>
+#include <rwloader/texture_dict.hpp>
 
 int main()
 {
@@ -7,7 +7,7 @@ int main()
     if (!txd_file)
         return 1;
     
-    RWLoader::Chunk chunk(txd_file);
+    RWLoader::TextureDict txd(txd_file);
     
     return 0;
 }

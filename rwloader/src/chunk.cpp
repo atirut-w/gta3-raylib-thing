@@ -1,20 +1,23 @@
 #include <rwloader/chunk.hpp>
+#include <sstream>
 
 using namespace RWLoader;
-
-template<typename T>
-T read(std::istream& stream)
-{
-    T value;
-    stream.read(reinterpret_cast<char*>(&value), sizeof(T));
-    return value;
-}
 
 Chunk::Chunk(std::istream& stream)
 {
     type = read<int>(stream);
     size = read<int>(stream);
     library_id = read<int>(stream);
+}
+
+void Chunk::assert_type(int expected)
+{
+    if (type != expected)
+    {
+        std::stringstream ss;
+        ss << "invalid chunk type. expected " << expected << ", got " << type << ".";
+        throw std::runtime_error(ss.str());
+    }
 }
 
 int Chunk::get_version()
