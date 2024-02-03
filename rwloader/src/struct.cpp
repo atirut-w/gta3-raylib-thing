@@ -1,1 +1,0 @@
-#include <rwloader/struct.hpp>
