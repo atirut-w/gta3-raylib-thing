@@ -3,24 +3,30 @@
 
 using namespace RWLoader;
 
-union TextureDictInfo
+class TXDInfo : public Struct
 {
-    struct
+public:
+    int num_textures;
+    int device_id = 0;
+
+    TXDInfo(std::istream& stream) : Struct(stream)
     {
-        int num_textures;
-    } rw30;
-    struct
-    {
-        short num_textures;
-        short device_id;
-    } rw36;
+        if (get_version() < 0x36000)
+        {
+            num_textures = read<int>(stream);
+        }
+        else
+        {
+            num_textures = read<short>(stream);
+            device_id = read<short>(stream);
+        }
+    }
 };
 
 TextureDict::TextureDict(std::istream& stream) : Chunk(stream)
 {
     assert_type(TEXTURE_DICT);
-    Struct<TextureDictInfo> info(stream);
-    int num_textures = get_version() < 0x36000 ? info.data.rw30.num_textures : info.data.rw36.num_textures;
+    TXDInfo info(stream);
 
     return;
 }
