@@ -6,6 +6,7 @@ namespace RWLoader
     enum ChunkType
     {
         STRUCT = 0x01,
+        RASTER = 0x15,
         TEXTURE_DICT = 0x16,
     };
     

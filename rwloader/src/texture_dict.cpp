@@ -1,5 +1,6 @@
 #include <rwloader/texture_dict.hpp>
 #include <rwloader/struct.hpp>
+#include <rwloader/raster.hpp>
 
 using namespace RWLoader;
 
@@ -17,6 +18,9 @@ TextureDict::TextureDict(std::istream& stream) : Chunk(stream)
         num_textures = read<short>(stream);
         device_id = read<short>(stream);
     }
+
+    // TODO: Actually load *all* the textures
+    Raster texture(stream);
 
     return;
 }
