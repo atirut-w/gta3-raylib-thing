@@ -7,5 +7,8 @@ namespace RWLoader
     {
     public:
         TextureDict(std::istream &);
+
+        int num_textures;
+        int device_id = 0;
     };
 }
