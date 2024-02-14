@@ -25,4 +25,13 @@ Raster::Raster(std::istream& stream) : Chunk(stream)
     name = buffer;
     stream.read(buffer, 32);
     mask_name = buffer;
+
+    raster_format = read<int>(stream);
+    d3d_format = read<int>(stream);
+    width = read<short>(stream);
+    height = read<short>(stream);
+    depth = read<char>(stream);
+    num_mip_levels = read<char>(stream);
+    raster_type = read<char>(stream);
+    compression = read<char>(stream);
 }

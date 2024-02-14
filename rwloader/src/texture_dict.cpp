@@ -21,6 +21,4 @@ TextureDict::TextureDict(std::istream& stream) : Chunk(stream)
 
     // TODO: Actually load *all* the textures
     Raster texture(stream);
-
-    return;
 }

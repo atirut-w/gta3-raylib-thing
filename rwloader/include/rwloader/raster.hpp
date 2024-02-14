@@ -29,14 +29,14 @@ namespace RWLoader
         int raster_type;
         union
         {
-            int compression;
+            char compression;
             struct
             {
-                bool has_alpha : 1;
-                bool is_cube : 1;
-                bool auto_mip_maps : 1;
-                bool compressed : 1;
-                int pad : 4;
+                int alpha : 1;
+                int cube_texture : 1;
+                int auto_mip_maps : 1;
+                int compressed : 1;
+                int padding : 4;
             };
         };
     };
