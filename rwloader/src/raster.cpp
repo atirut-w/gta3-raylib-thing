@@ -14,10 +14,10 @@ Raster::Raster(std::istream& stream) : Chunk(stream)
     if (platform_id != 8)
         throw std::runtime_error("Unsupported platform ID");
 
-    filter_mode = read<char>(stream);
+    filter_mode = (FilterMode)read<char>(stream);
     int uv_addressing = read<char>(stream);
-    u_addressing = uv_addressing & 0x0F;
-    v_addressing = uv_addressing >> 4;
+    u_addressing = (UVAddressing)(uv_addressing & 0x0F);
+    v_addressing = (UVAddressing)(uv_addressing >> 4);
 
     stream.seekg(2, std::ios::cur); // Skip padding
     char buffer[32];
@@ -26,7 +26,7 @@ Raster::Raster(std::istream& stream) : Chunk(stream)
     stream.read(buffer, 32);
     mask_name = buffer;
 
-    raster_format = read<int>(stream);
+    raster_format = (RasterFormat)read<int>(stream);
     d3d_format = read<int>(stream);
     width = read<short>(stream);
     height = read<short>(stream);
